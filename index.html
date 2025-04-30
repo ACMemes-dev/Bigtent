@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Big Tent Presidential Meme Coin</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy: #1c2b46;
+      --gold: #c4a139;
+      --gray: #f5f7fa;
+      --font-sans: 'Inter', sans-serif;
+      --font-serif: 'Noto Serif KR', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--gray); color: #111; line-height: 1.6; }
+    h1,h2,h3 { font-family: var(--font-serif); color: var(--navy); }
+
+    /* --- Layout helpers --- */
+    .container {
+      width: min(1200px, 90%);
+      margin-inline: auto;
+      padding-block: 4rem;
+    }
+
+    /* --- NAV --- */
+    header {
+      position: fixed; inset: 0 0 auto 0; height: 70px; background: var(--navy); color: white; display: flex; align-items: center; z-index: 1000;
+    }
+    header nav { width: min(1200px, 90%); margin-inline: auto; display: flex; justify-content: space-between; align-items: center; }
+    header a.logo { font-family: var(--font-serif); font-size: 1.25rem; color: white; text-decoration: none; }
+    header ul { list-style: none; display: flex; gap: 1.5rem; }
+    header ul a { color: white; text-decoration: none; font-weight: 600; }
+
+    /* --- HERO --- */
+    .hero { height: 100vh; background: url('https://images.unsplash.com/photo-1551836022-4c4c79ecde72?auto=format&fit=crop&w=1600&q=80') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; }
+    .hero::after { content: ""; position: absolute; inset: 0; background: rgba(28,43,70,.6); }
+    .hero-content { position: relative; z-index: 1; padding-inline: 1rem; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 50ch; margin-inline: auto; }
+    .btn { display: inline-block; padding: .75rem 1.5rem; border-radius: 6px; font-weight: 600; letter-spacing: .02em; text-decoration: none; transition: background .25s ease; }
+    .btn-primary { background: var(--gold); color: var(--navy); }
+    .btn-secondary { background: transparent; border: 2px solid var(--gold); color: white; }
+    .btn-primary:hover { background: #b7932e; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    /* --- VISION --- */
+    .vision { background: white; }
+    .vision .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 2rem; margin-top: 2rem; }
+    .vision article { background: var(--gray); padding: 2rem; border-radius: 8px; transition: transform .25s; }
+    .vision article:hover { transform: translateY(-4px); }
+
+    /* --- ROADMAP --- */
+    .roadmap { background: var(--navy); color: white; }
+    .roadmap h2 { background: var(--navy); color: white; }
+    .timeline { position: relative; margin-top: 3rem; }
+    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 4px; height: 100%; background: var(--gold); }
+    .milestone { position: relative; width: 50%; padding: 1.5rem 2rem; }
+    .milestone:nth-child(odd) { left: 0; text-align: right; }
+    .milestone:nth-child(even) { left: 50%; }
+    .milestone h3 { margin-bottom: .5rem; color: white;  }
+    .milestone::before { content: ''; position: absolute; top: 1.8rem; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); }
+    .milestone:nth-child(odd)::before { right: -6px; }
+    .milestone:nth-child(even)::before { left: -6px; }
+
+    /* --- PARTICIPATE --- */
+    .participate { background: white; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .step { background: var(--gray); padding: 1.5rem; border-radius: 8px; }
+    .step span { display: block; font-size: 2rem; font-weight: 600; color: var(--gold); }
+
+    /* --- UPDATES --- */
+    .updates { background: var(--gray); }
+    .updates ul { list-style: none; margin-top: 2rem; }
+    .updates li { background: white; padding: 1rem 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--gold); }
+
+    /* --- FOOTER --- */
+    footer { background: var(--navy); color: white; text-align: center; padding: 2rem 1rem; }
+
+    /* --- Responsive tweaks --- */
+    @media(max-width: 767px){
+      header ul { display: none; }
+      header .menu-btn { display: block; cursor: pointer; font-size: 1.5rem; }
+      #mobileMenu { position: fixed; inset: 0 0 0 auto; width: 70%; background: var(--navy); transform: translateX(100%); transition: transform .3s ease; padding: 4rem 2rem; }
+      #mobileMenu.open { transform: translateX(0); }
+      #mobileMenu ul { display: flex; flex-direction: column; gap: 1.5rem; }
+      .timeline::before { left: 8px; }
+      .milestone { width: 100%; left: 0 !important; padding-left: 2.5rem; text-align: left !important; }
+      .milestone::before { left: -14px !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header>
+    <nav>
+      <a href="#" class="logo">BIG TENT COIN (HDS)</a>
+      <span class="menu-btn" onclick="toggleMenu()">☰</span>
+      <ul>
+        <li><a href="#vision">그의 한마디</a></li>
+        <li><a href="#roadmap">로드맵</a></li>
+        <li><a href="#participate">밈코인 구매</a></li>
+        <li><a href="#updates">업데이트</a></li>
+      </ul>
+    </nav>
+    <div id="mobileMenu">
+      <ul>
+        <li><a href="#vision" onclick="toggleMenu()">그의 한마디</a></li>
+        <li><a href="#roadmap" onclick="toggleMenu()">로드맵</a></li>
+        <li><a href="#participate" onclick="toggleMenu()">밈코인 구매</a></li>
+        <li><a href="#updates" onclick="toggleMenu()">업데이트</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Big Tent</h1>
+      <p>한덕수</p>
+      <p>CA : On Process</p>
+      <a href="#participate" class="btn btn-primary">빅텐트 코인 구매</a>
+      <a href="#vision" class="btn btn-secondary" style="margin-left:1rem;">그의 한마디</a>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="vision container" id="vision">
+    <h2>그의 한마디</h2>
+    <div class="grid">
+      <article>
+        <h3>어록 1</h3>
+        <p>우리의 문제는 현장에 답이 있다.</p>
+      </article>
+      <article>
+        <h3>어록 2</h3>
+        <p>국민을 움직이는 정치의 힘은, 모욕과 능멸에 있는 게 아닙니다.</p>
+      </article>
+      <article>
+        <h3>어록 3</h3>
+        <p>지난 몇 년 우리가 명백한 목격하고 배운 것이 있다면, 극단으로 갈라진 사회는 불행으로 치달을 뿐, 누구의 꿈도 이루지 못한다는 점입니다. 여야와 정부가 정말 달라져야 합니다. 저부터 그렇게 하겠습니다..</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="roadmap" id="roadmap">
+    <div class="container">
+      <h2>Roadmap</h2>
+      <div class="timeline">
+        <div class="milestone">
+          <h3>25.05.11</h3>
+          <p>후보자 등록</p>
+        </div>
+        <div class="milestone">
+          <h3>TBD</h3>
+          <p>CEX 상장</p>
+        </div>
+        <div class="milestone">
+          <h3>25.06.03</h3>
+          <p>대통령 선거</p>
+        </div>
+        <div class="milestone">
+            <h3>당선 이후</h3>
+            <p>To The Moon</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTICIPATE -->
+  <section class="participate container" id="participate">
+    <h2>코인 구매 방법</h2>
+    <div class="steps">
+      <div class="step"><span>1</span> 아래의 빅텐트 코인 구매 버튼을 클릭한다.</div>
+      <div class="step"><span>2</span> Jupiter에서 지원하는 지갑을 연결한다.</div>
+      <div class="step"><span>3</span> 스왑을 통해 빅텐트 코인을 구매한다.</div>
+    </div>
+    <button class="btn btn-primary" style="margin-top:2rem;" onclick="connectWallet()">빅텐트 코인 구매</button>
+  </section>
+
+  <!-- UPDATES -->
+  <section class="updates" id="updates">
+    <div class="container">
+      <h2>Latest Updates</h2>
+      <ul>
+        <li><strong>[2025-04-29]</strong> 빅텐트 코인 발행</li>
+        <li><strong>[2025-04-29]</strong> 커뮤니티 출범</li>
+        <li><strong>[2025-04-27]</strong> 로드맵 공개</li>
+        <li><strong>[2025-04-25]</strong> 빅텐트 코인 팀 출범</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Big Tent Presidential Meme Coin · All rights reserved.</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+
+    function connectWallet(){
+      Window.open('https://jup.ag', '_blank');
+    }
+  </script>
+</body>
+</html>
+   
