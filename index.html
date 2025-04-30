@@ -40,23 +40,87 @@
     header ul a { color: white; text-decoration: none; font-weight: 600; }
 
     /* --- HERO --- */
-    .hero { height: 100vh; background: url('https://images.unsplash.com/photo-1551836022-4c4c79ecde72?auto=format&fit=crop&w=1600&q=80') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; }
-    .hero::after { content: ""; position: absolute; inset: 0; background: rgba(28,43,70,.6); }
-    .hero-content { position: relative; z-index: 1; padding-inline: 1rem; }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem; }
-    .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 50ch; margin-inline: auto; }
-    .btn { display: inline-block; padding: .75rem 1.5rem; border-radius: 6px; font-weight: 600; letter-spacing: .02em; text-decoration: none; transition: background .25s ease; }
-    .btn-primary { background: var(--gold); color: var(--navy); }
-    .btn-secondary { background: transparent; border: 2px solid var(--gold); color: white; }
-    .btn-primary:hover { background: #b7932e; }
-    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
-
+    .hero{
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1551836022-4c4c79ecde72?auto=format&fit=crop&w=1600&q=80') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(28,43,70,.6);
+    }
+    .hero-content{
+      position: relative;
+      z-index: 1;
+      padding-inline: 1rem;
+    }
+    .hero h1{
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+    }
+    .hero p{
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 50ch;
+      margin-inline: auto;
+    }
+    /* shared buttons */
+    .btn{
+      display: inline-block;
+      padding: .75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: background .25s ease;
+    }
+    .btn-primary{
+      background: var(--gold);
+      color: var(--navy);
+    }
+    .btn-secondary{
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: white;
+    }
+    .btn-primary:hover{ background:#b7932e; }
+    .btn-secondary:hover{ background:rgba(255,255,255,0.1); }
+    /* hero image */
     .hero-img{
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
+      width:150px;
+      height:150px;
+      object-fit:cover;
+      border-radius:8px;
+      margin-top:1.5rem;
+    }
+
+    /* --- SOCIAL LINKS --- */
+    .social-links{
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
       margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .social-links a{
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid var(--gold);
+      padding: .5rem 1rem;
+      border-radius: 6px;
+      transition: background .25s ease;
+    }
+    .social-links a:hover{
+      background: var(--gold);
+      color: var(--navy);
     }
 
     /* --- VISION --- */
@@ -112,6 +176,7 @@
       <a href="#" class="logo">BIG TENT COIN (HDS)</a>
       <span class="menu-btn" onclick="toggleMenu()">☰</span>
       <ul>
+        <li><a href="#social">소셜</a></li>
         <li><a href="#vision">그의 한마디</a></li>
         <li><a href="#roadmap">로드맵</a></li>
         <li><a href="#participate">밈코인 구매</a></li>
@@ -120,6 +185,7 @@
     </nav>
     <div id="mobileMenu">
       <ul>
+        <li><a href="#social" onclick="toggleMenu()">소셜</a></li>
         <li><a href="#vision" onclick="toggleMenu()">그의 한마디</a></li>
         <li><a href="#roadmap" onclick="toggleMenu()">로드맵</a></li>
         <li><a href="#participate" onclick="toggleMenu()">밈코인 구매</a></li>
@@ -138,6 +204,18 @@
       
       <a href="#participate" class="btn btn-primary">빅텐트 코인 구매</a>
       <a href="#vision" class="btn btn-secondary" style="margin-left:1rem;">그의 한마디</a>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="social container" id="social">
+    <h2>소셜 채널</h2>
+    <div class="social-links">
+      <!-- Replace “#” with real URLs -->
+      <a href="https://x.com/HDS_BigTent" target="_blank" rel="noopener">X(Twitter)</a>
+      <a href="https://t.me/bigtent_hds" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://open.kakao.com/o/gavpvHth" target="_blank" rel="noopener">KakaoTalk</a>
+      <a href="https://dexscreener.com/solana/AingcE4YTgSRqeCYEoWgSym1oyY55g6SwE718JX1pump" target="_blank" rel="noopener">Dexscreener</a>
     </div>
   </section>
 
